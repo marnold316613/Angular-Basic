@@ -47,12 +47,27 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
+      <hr>
+      
+        <p *ngIf="blueClass"> Button is blue</p>
+    
+
+      <button (click)="blueClass=!blueClass" [ngClass]="{blue: blueClass}" 
+       [ngStyle]="{ 'font-size.px': fontSize}"
+      >Change</button>
+
+      <hr>
       <h1>Hello, {{ getName() }}</h1>
       <input (keyup)="changeImage($event)" [value]="imgURL">
-      <app-post [img]="imgURL" (imgSelected)="logImg($event)">
-      <p>This is a test! Does it work</p>
+      <app-post *ngFor="let image of images; let i = index" [img]="image" (imgSelected)="logImg($event)">
+      <p> {{i+1}}. Image Caption</p>
       </app-post>
       <p>Congratulations! Your app is running. 🎉</p>
+      <p>Hello {{ name | titlecase}}</p>
+      <p>Current Date: {{ currentDate | date: 'MMMM d'}}</p>
+      <p> {{ cost | currency: 'USD'}}</p>
+      <p> {{ temperature | number: '1.0-5'}}</p>
+      <pre>  {{ pizza | json}}</pre>
     </div>
    
   </div>
